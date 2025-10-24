@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mental Health App Design System - Relaxing and Therapeutic Colors 
+All colors MUST be HSL for accessibility and theming.
+*/
+
+@layer base {
+  :root {
+    /* Main calming backgrounds */
+    --background: 152 20% 96%; /* Light mint green background */
+    --foreground: 215 25% 27%; /* Dark blue-gray for readability */
+
+    /* Card and surface colors */
+    --card: 0 0% 100%; /* Pure white for cards */
+    --card-foreground: 215 25% 27%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 27%;
+
+    /* Primary therapeutic green */
+    --primary: 152 25% 55%; /* Sage green */
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 152 35% 75%; /* Light mint green */
+
+    /* Secondary calming blue */
+    --secondary: 200 35% 88%; /* Powder blue */
+    --secondary-foreground: 215 25% 27%;
+    --secondary-soft: 200 45% 65%; /* Medium blue */
+
+    /* Muted backgrounds */
+    --muted: 210 17% 96%; /* Light gray-blue */
+    --muted-foreground: 215 16% 47%;
+
+    /* Accent lavender */
+    --accent: 255 35% 85%; /* Light lavender */
+    --accent-foreground: 215 25% 27%;
+    --accent-soft: 255 45% 80%;
+
+    /* Therapeutic aqua */
+    --therapeutic: 180 45% 75%; /* Aqua marine */
+    --therapeutic-foreground: 0 0% 100%;
+
+    /* Feedback colors - soft and non-alarming */
+    --success: 142 50% 70%; /* Soft green */
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 35 85% 70%; /* Soft orange */
+    --warning-foreground: 215 25% 27%;
+    
+    --destructive: 0 65% 75%; /* Soft red */
+    --destructive-foreground: 0 0% 100%;
+
+    /* UI Elements */
+    --border: 152 15% 85%;
+    --input: 152 15% 92%;
+    --ring: 152 25% 55%;
+
+    /* Design tokens */
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode with deeper, calming tones */
+    --background: 215 25% 12%; /* Deep blue-gray */
+    --foreground: 152 20% 92%;
+
+    --card: 215 25% 15%;
+    --card-foreground: 152 20% 92%;
+
+    --popover: 215 25% 15%;
+    --popover-foreground: 152 20% 92%;
+
+    --primary: 152 30% 45%; /* Darker sage */
+    --primary-foreground: 0 0% 100%;
+    --primary-soft: 152 25% 35%;
+
+    --secondary: 215 25% 20%; /* Dark blue-gray */
+    --secondary-foreground: 152 20% 92%;
+    --secondary-soft: 200 30% 35%;
+
+    --muted: 215 25% 18%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 255 25% 25%; /* Dark lavender */
+    --accent-foreground: 152 20% 92%;
+    --accent-soft: 255 30% 35%;
+
+    --therapeutic: 180 35% 35%; /* Darker aqua */
+    --therapeutic-foreground: 0 0% 100%;
+
+    --success: 142 40% 45%;
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 35 70% 55%;
+    --warning-foreground: 215 25% 12%;
+    
+    --destructive: 0 55% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 25%;
+    --input: 215 25% 20%;
+    --ring: 152 30% 45%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Additional design tokens for mental health app */
+    --shadow-soft: 152 20% 85% 0.3;
+    --shadow-glow: 152 30% 70% 0.2;
+    --gradient-calming: linear-gradient(135deg, hsl(var(--primary-soft)), hsl(var(--therapeutic)));
+    --gradient-mood: linear-gradient(90deg, hsl(var(--success)), hsl(var(--accent-soft)));
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Soft focus styles for accessibility */
+  .focus-soft:focus {
+    @apply outline-none ring-2 ring-offset-2;
+    ring-color: hsl(var(--ring));
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring) / 0.3);
+  }
+
+  /* Smooth animations for reduced motion users */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
